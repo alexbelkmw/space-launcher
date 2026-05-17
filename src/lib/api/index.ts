@@ -13,12 +13,12 @@ interface requestOptions<T extends z.ZodTypeAny> {
 export async function request<T extends z.ZodTypeAny>({
   baseUrl,
   endpoint,
-  data = {},
+  data,
   params = {},
   headers,
   method = "GET",
   schema,
-}: requestOptions<T>) {
+}: requestOptions<T>): Promise<z.infer<T>> {
   try {
     const url = new URL(baseUrl + endpoint);
     url.search = new URLSearchParams(params).toString();

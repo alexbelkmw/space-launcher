@@ -11,10 +11,10 @@ export const NasaApodResponseSchema = z.object({
   explanation: z.string(),
 
   // URL изображения в высоком разрешении (опционально, так как для видео может отсутствовать)
-  hdurl: z.string().url().optional(),
+  hdurl: z.url().optional(),
 
   // Тип контента (обычно "image" или "video")
-  media_type: z.string(),
+  media_type: z.enum(["image", "video"]),
 
   // Версия используемого API сервиса
   service_version: z.string(),
@@ -23,13 +23,13 @@ export const NasaApodResponseSchema = z.object({
   title: z.string(),
 
   // URL стандартного изображения или плеера видео
-  url: z.string().url(),
+  url: z.url(),
 
   // Внутренние теги NASA (необязательное поле, возвращается при наличии параметра concept_tags)
   concept_tags: z.array(z.string()).optional(),
 
   // Ссылка на превью (опционально, возвращается для видео-контента приthumbs=true)
-  thumbnail_url: z.string().url().optional(),
+  thumbnail_url: z.url().optional(),
 
   // Авторские права (необязательное поле, если изображение в общественном достоянии)
   copyright: z.string().optional(),

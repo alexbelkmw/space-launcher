@@ -25,7 +25,7 @@ export const LaunchImageSchema = z.object({
   credit: z.string(),
   license: ImageLicenseSchema,
   single_use: z.boolean(),
-  variants: z.array(z.unknown()),
+  variants: z.array(z.unknown()), //TODO: что тут за данные?
 });
 
 export const NetPrecisionSchema = z.object({

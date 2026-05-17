@@ -1,8 +1,22 @@
 import z from "zod";
 import { request } from "./";
 import { LaunchResponseSchema } from "../schemas/launches";
+import { requireEnv } from "../utils/env";
 
-const BASE_URL = process.env.SPACE_DEVS_URL;
+const BASE_URL = requireEnv("SPACE_DEVS_URL");
+
+async function tsdRequest<T extends z.ZodTypeAny>(
+  endpoint: string,
+  params: Record<string, string>,
+  schema: T,
+) {
+  return await request({
+    baseUrl: BASE_URL,
+    endpoint,
+    params,
+    schema,
+  });
+}
 
 interface LaunchesParameters {
   mode: "list" | "normal" | "detailed";
@@ -11,27 +25,15 @@ interface LaunchesParameters {
   limit: string;
 }
 
-async function tsdRequest<T extends z.ZodTypeAny>(
-  endpoint: string,
-  params: Partial<LaunchesParameters>,
-  schema: T,
-) {
-  if (typeof BASE_URL !== "string")
-    throw new Error("Отсутствует URL SPACE DEV");
-
-  return await request({
-    baseUrl: BASE_URL,
-    endpoint,
-    params: {
-      mode: params.mode ?? "list",
-      ordering: params.ordering ?? "last_updated",
-      limit: params.limit ?? "10",
-      ...params.filters,
-    },
-    schema,
-  });
-}
-
 export const getLaunches = (data: Partial<LaunchesParameters>) => {
-  return tsdRequest("launches/", data, LaunchResponseSchema);
+  return tsdRequest(
+    "launches/",
+    {
+      mode: data.mode ?? "list",
+      ordering: data.ordering ?? "last_updated",
+      limit: data.limit ?? "10",
+      ...data.filters,
+    },
+    LaunchResponseSchema,
+  );
 };
