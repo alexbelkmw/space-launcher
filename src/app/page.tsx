@@ -4,7 +4,6 @@ import { getLaunches } from "@/lib/api/tsd";
 
 export default async function Home() {
   // const result = await getLaunches({}).then((res) => res);
-  // const result = await getApod({}).then((res) => res);
   const result = await getAsteroids({}).then((res) => res);
 
   return (
