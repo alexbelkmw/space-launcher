@@ -17,7 +17,7 @@ async function nasaRequest<T extends z.ZodTypeAny>(
   return await request({ baseUrl: BASE_URL, endpoint, params, schema });
 }
 
-interface APODParameters {
+export interface APODParameters {
   date: string;
   start_date: string;
   end_date: string;
