@@ -14,12 +14,18 @@ export const LaunchCard = ({ launch }: { launch: Launch }) => {
         <DialogTitle>{launch.name}</DialogTitle>
       </DialogHeader>
       <div className="size-60 relative">
-        <Image
-          src={launch.image?.image_url ?? ""}
-          alt="launch_image"
-          fill
-          style={{ objectFit: "cover" }}
-        />
+        {launch.image ? (
+          <Image
+            src={launch.image.image_url ?? ""}
+            alt={launch.image.name}
+            fill
+            style={{ objectFit: "cover" }}
+          />
+        ) : (
+          <p className="w-full h-full flex items-center justify-center">
+            No Image
+          </p>
+        )}
       </div>
       <div className="w-full px-5">
         <div className="flex justify-between border-b border-b-gray-200 py-1">

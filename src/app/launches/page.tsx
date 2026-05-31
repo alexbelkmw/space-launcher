@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Launches() {
   const { results } = await getLaunches({ limit: "100" });
-  results.forEach((launch) => console.log(launch.id));
+
   return (
     <div className="max-w-200 mx-auto h-full flex flex-col">
       <h1 className="text-center text-3xl my-3">Launches</h1>
