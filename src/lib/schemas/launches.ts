@@ -22,7 +22,7 @@ export const LaunchImageSchema = z.object({
   name: z.string(),
   image_url: z.url(),
   thumbnail_url: z.url(),
-  credit: z.string(),
+  credit: z.string().nullable(),
   license: ImageLicenseSchema,
   single_use: z.boolean(),
   variants: z.array(z.unknown()), //TODO: что тут за данные?
@@ -48,6 +48,7 @@ export const LaunchSchema = z.object({
   net: z.iso.datetime(),
   net_precision: NetPrecisionSchema.nullable(),
   window_start: z.iso.datetime(),
+  window_end: z.iso.datetime(),
   image: LaunchImageSchema.nullable(),
   infographic: z.string().nullable(),
 });

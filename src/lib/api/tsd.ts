@@ -18,7 +18,7 @@ async function tsdRequest<T extends z.ZodTypeAny>(
   });
 }
 
-interface LaunchesParameters {
+export interface LaunchesParameters {
   mode: "list" | "normal" | "detailed";
   filters: Record<string, string>;
   ordering: "id" | "last_updated" | "name" | "net";
@@ -27,10 +27,10 @@ interface LaunchesParameters {
 
 export const getLaunches = (data: Partial<LaunchesParameters>) => {
   return tsdRequest(
-    "launches/",
+    "launches",
     {
       mode: data.mode ?? "list",
-      ordering: data.ordering ?? "last_updated",
+      ordering: data.ordering ?? "-last_updated",
       limit: data.limit ?? "10",
       ...data.filters,
     },
