@@ -16,8 +16,8 @@ import { LaunchCard } from "./LaunchCard";
 export const LaunchList = ({ launches }: { launches: Launch[] }) => {
   return (
     <Table className="table-fixed ">
-      <TableHeader>
-        <TableRow>
+      <TableHeader className="bg-[#0F051D] **:text-white">
+        <TableRow className="border-[#121214]">
           <TableHead>Name</TableHead>
           <TableHead>Last Updated</TableHead>
           <TableHead>Status</TableHead>
@@ -30,7 +30,7 @@ export const LaunchList = ({ launches }: { launches: Launch[] }) => {
           return (
             <Dialog key={launch.id}>
               <DialogTrigger asChild>
-                <TableRow className="cursor-pointer">
+                <TableRow className="cursor-pointer border-[#121214]">
                   <TableCell>{launch.name}</TableCell>
                   <TableCell>{formatIsoDate(launch.last_updated)}</TableCell>
                   <TableCell>{launch.status.name}</TableCell>

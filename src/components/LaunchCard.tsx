@@ -9,11 +9,11 @@ import Image from "next/image";
 
 export const LaunchCard = ({ launch }: { launch: Launch }) => {
   return (
-    <DialogContent className="flex flex-col items-center">
+    <DialogContent className="flex flex-col items-center bg-[#1C1A27]">
       <DialogHeader>
-        <DialogTitle>{launch.name}</DialogTitle>
+        <DialogTitle className="text-white">{launch.name}</DialogTitle>
       </DialogHeader>
-      <div className="size-60 relative">
+      <div className="size-60 relative text-white">
         {launch.image ? (
           <Image
             src={launch.image.image_url ?? ""}
@@ -27,7 +27,7 @@ export const LaunchCard = ({ launch }: { launch: Launch }) => {
           </p>
         )}
       </div>
-      <div className="w-full px-5">
+      <div className="w-full px-5 text-white">
         <div className="flex justify-between border-b border-b-gray-200 py-1">
           <p>Start</p>
           {formatIsoDate(launch.window_start)}

@@ -68,11 +68,11 @@ export const AsteroidChart = ({
         title: {
           display: true,
           text: "X (Distance, km)",
-          color: "#333",
+          color: "#fff",
           font: { size: 14, weight: "bold" },
         },
         grid: {
-          color: "rgba(200, 200, 200, 0.3)",
+          color: "rgba(255, 255, 255, 0.3)",
         },
       },
       y: {
@@ -81,11 +81,11 @@ export const AsteroidChart = ({
         title: {
           display: true,
           text: "Y (Max diameter, km)",
-          color: "#333",
+          color: "#fff",
           font: { size: 14, weight: "bold" },
         },
         grid: {
-          color: "rgba(200, 200, 200, 0.3)",
+          color: "rgba(255, 255, 255, 0.3)",
         },
       },
     },

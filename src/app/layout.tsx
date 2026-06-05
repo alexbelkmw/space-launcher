@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/layout/Header";
+import { StarsBackground } from "@/components/StarsBackground";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -40,7 +41,10 @@ export default function RootLayout({
     >
       <body className="h-screen flex flex-col overflow-auto">
         <Header />
-        <main className="grow overflow-hidden">{children}</main>
+        <main className="grow overflow-hidden bg-[#1C1A27] text-white">
+          <StarsBackground />
+          {children}
+        </main>
       </body>
     </html>
   );

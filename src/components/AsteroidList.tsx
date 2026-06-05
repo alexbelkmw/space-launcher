@@ -27,9 +27,9 @@ export const AsteroidList = ({
   asteroids: NearEarthObject[];
 }) => {
   return (
-    <Table className="h-1/2">
-      <TableHeader>
-        <TableRow>
+    <Table>
+      <TableHeader className="bg-[#0F051D]">
+        <TableRow className="border-[#121214] **:text-white">
           <TableHead>
             <LucideIcon icon={<Telescope />} title="Name" />
           </TableHead>
@@ -59,7 +59,10 @@ export const AsteroidList = ({
       <TableBody>
         {asteroids.map((asteroid) => {
           return (
-            <TableRow key={asteroid.id} className="cursor-pointer">
+            <TableRow
+              key={asteroid.id}
+              className="cursor-pointer  [&_*:not(:first-child)]:text-center border-[#121214]"
+            >
               <TableCell>{asteroid.name}</TableCell>
               <TableCell>
                 {round(
@@ -73,7 +76,6 @@ export const AsteroidList = ({
               </TableCell>
               <TableCell
                 className={cn(
-                  "",
                   asteroid.is_potentially_hazardous_asteroid && "text-red-500",
                 )}
               >

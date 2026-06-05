@@ -9,7 +9,7 @@ interface Props {
 
 export const LucideIcon = ({ icon, title, className }: Props) => {
   return (
-    <div title={title} className={cn("flex justify-center", className)}>
+    <div title={title} className={cn("flex justify-center ", className)}>
       {icon}
     </div>
   );
