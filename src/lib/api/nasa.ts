@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { request } from "./";
 import { NasaApodResponseSchema } from "../schemas/apod";
-import { NasaNeoFeedResponseSchema } from "../schemas/asteroids";
+import { TransformedNasaNeoFeedResponseSchema } from "../schemas/asteroids";
 import { requireEnv } from "../utils/env";
 
 const BASE_URL = requireEnv("NASA_URL");
@@ -34,5 +34,9 @@ interface AsteroidsParameters {
 }
 
 export const getAsteroids = (data: Partial<AsteroidsParameters>) => {
-  return nasaRequest("neo/rest/v1/feed", data, NasaNeoFeedResponseSchema);
+  return nasaRequest(
+    "neo/rest/v1/feed",
+    data,
+    TransformedNasaNeoFeedResponseSchema,
+  );
 };

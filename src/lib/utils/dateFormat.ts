@@ -9,8 +9,6 @@ export function formatIsoDate(isoString: string): string {
   const date: Date = new Date(isoString);
 
   if (isNaN(date.getTime())) {
-    console.log(date);
-
     throw new Error("Некорректный формат ISO даты");
   }
 

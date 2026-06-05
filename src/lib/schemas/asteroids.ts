@@ -73,3 +73,18 @@ export const NasaNeoFeedResponseSchema = z.object({
 export type NasaNeoFeedResponse = z.infer<typeof NasaNeoFeedResponseSchema>;
 export type NearEarthObject = z.infer<typeof NearEarthObjectSchema>;
 export type CloseApproachData = z.infer<typeof CloseApproachDataSchema>;
+
+// Перевод ответа от Nasa в массив
+export const TransformedNasaNeoFeedResponseSchema =
+  NasaNeoFeedResponseSchema.transform((data) => {
+    return {
+      count: data.element_count,
+      asteroids: Object.values(data.near_earth_objects).reduce(
+        (acc, current) => [...acc, ...current],
+      ),
+    };
+  });
+
+export type AsteroidsResponse = z.infer<
+  typeof TransformedNasaNeoFeedResponseSchema
+>;
