@@ -27,7 +27,7 @@ export const AsteroidList = ({
   asteroids: NearEarthObject[];
 }) => {
   return (
-    <Table>
+    <Table className="h-1/2">
       <TableHeader>
         <TableRow>
           <TableHead>
